@@ -1,0 +1,25 @@
+# Badge
+
+# References
+# https://www.rasukarusan.com/entry/2019/04/13/180443
+# https://qiita.com/kompiro/items/a09c0b44e7c741724c80
+
+# Shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh" || true
+
+function badge() {
+    printf "\e]1337;SetBadgeFormat=%s\a"\
+    $(echo -n "$1" | base64)
+}
+
+function ss() {
+    local ssh_config=~/.ssh/config
+    local server=$(cat $ssh_config | grep "Host " | sed "s/Host //g" | fzf)
+    if [ -z "$server" ]; then
+        return
+    fi
+    badge $server
+    ssh $server
+}
+
+badge $HOST

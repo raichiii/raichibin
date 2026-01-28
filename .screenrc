@@ -1,0 +1,68 @@
+startup_message off
+vbell off
+escape ^Tt
+altscreen on
+
+# Log
+deflog on
+log on
+logfile '/project/nblab/kkawahata/_log/s%Y%m%d-%c:%s.%S@%H-%n.log'
+logtstamp on
+logtstamp string "\n-- SCREEN [%Y/%m/%d %c:%s] %n:%t --\n"
+
+# Scrollback buffer
+defscrollback 10000
+defutf8 on
+autodetach on
+
+# Escape zombie process. ^[ means escape key.
+# zombie ^[
+zombie ^d
+verbose on
+
+# Hard status
+hardstatus alwayslastline "%{= cd} %-w%{= dd} %n %t* %{-}%+w %= LoadAVG [%l] "
+
+# Caption
+caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+
+# Used shell
+shell $SHELL
+
+# Encoding
+defencoding utf8
+encoding utf8 utf8
+
+# window re-numbering
+# override default `N'(number) mapping
+bind N colon 'number '
+
+# refuses yet another hack in rpm packaged screenrc.
+# both ] and ^] does write the paste (default unnamed) buffer.
+bind ^] paste .
+
+# Window list
+bind w windowlist -b
+
+# Screen message setting
+sorendition "+rb .G"
+
+# Screen message duration
+msgminwait 2
+msgwait 3
+
+# Color
+termcapinfo xterm*|kterm*|screen* Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm
+termcapinfo linux ti@:te@
+termcapinfo xterm* ti@:te@
+term xterm-256color
+defbce on
+
+# Protection from attacks
+multiuser off
+idle off
+
+
+# Reference
+# https://yskwkzhr.blogspot.com/2010/11/screenrc.html
+# https://shyouhei.tumblr.com/post/313410522/%E4%BF%BA%E3%81%AE-screenrc-%E3%81%8C%E7%81%AB%E3%82%92%E5%90%B9%E3%81%8F%E3%81%9C

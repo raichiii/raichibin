@@ -1,0 +1,25 @@
+set -u
+
+. import-env $RAICHIBIN_PATH/.env
+
+pushMsg() {
+    text=`echo ${@}`
+    curl -s -X POST https://slack.com/api/chat.postMessage \
+        -H "Content-type: application/json" \
+        -H "Authorization: Bearer $SLACK_OAUTH_TOKEN" \
+        --data "{
+            \"channel\":\"#$SLACK_CHANNEL_NAME\",
+            \"text\":\"$text\"
+        }"
+}
+
+res=`pushMsg "${@}"`
+res=`echo $res | sed -E 's/.*"ok":(true).*/\1/'`
+
+if [[ "$res" == "true" ]]; then
+    # Success
+    echo "The message was sent! [${@}]"
+else
+    # Error
+    echo `echo $res | sed -E 's/.*"message":"(.*)"}/\1/'`
+fi

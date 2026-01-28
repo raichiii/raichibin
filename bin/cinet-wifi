@@ -1,0 +1,10 @@
+#!/bin/bash -eu
+
+. import-env $RAICHIBIN_PATH/.env
+
+IMG_PATH_REMOTE='~/CiNetWiFi.png'
+IMG_PATH=~/Documents/CiNetWiFi.png
+
+ssh $NICT_SERVER_CONFIG "bash _cinet-wifi $IMG_PATH_REMOTE"
+scp $NICT_SERVER_CONFIG:$IMG_PATH_REMOTE $IMG_PATH
+open $IMG_PATH

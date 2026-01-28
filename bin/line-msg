@@ -1,0 +1,32 @@
+set -u
+
+. import-env $RAICHIBIN_PATH/.env
+
+pushMsg() {
+    text=`echo ${@}`
+    curl -s -X POST https://api.line.me/v2/bot/message/push \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $LINE_CHANNEL_ACCESS_TOKEN" \
+        -d "{
+        \"to\": \"$LINE_USER_ID\",
+        \"messages\":[
+            {
+                \"type\":\"text\",
+                \"text\":\"$text\"
+            }
+        ]
+    }"
+}
+
+res=""
+if "${MSG}"; then
+    res=`pushMsg "${@}"`
+fi
+
+if [[ "$res" =~ message ]]; then
+    # Error
+    echo `echo $res | sed -E 's/.*"message":"(.*)"}/\1/'`
+else
+    # Success
+    echo "The message was sent! [${@}]"
+fi
