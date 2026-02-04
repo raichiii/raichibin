@@ -20,3 +20,5 @@ brew install -yqq --cask \
 
 # Show full path on the top of Finder.app.
 defaults write com.apple.finder _FXShowPosixPathInTitle -boolean true && killall Finder
+
+ln -s $HOME/.raichibin/.screenrc $HOME/.screenrc

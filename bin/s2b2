@@ -1,6 +1,2 @@
-sl=${1:-60}
-while [ 0 ]; do
-    # lsof -t -i:55900 | xargs kill -9
-    s2b2-once
-    sleep $sl
-done
+screen -d -m -S caffeinate caffeinate
+screen -d -m -S s2b2 __s2b2-screen $1
