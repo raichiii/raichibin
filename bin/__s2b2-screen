@@ -1,6 +1,4 @@
 sl=${1:-600}
-echo xxx
-echo $sl
 while [ 0 ]; do
     lsof -t -i:55900 | xargs kill -9
     s2b2-once
