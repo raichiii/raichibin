@@ -58,6 +58,10 @@ termcapinfo xterm* ti@:te@
 term xterm-256color
 defbce on
 
+# Mouse scroll
+mousescroll on
+mousespeed 1
+
 # Protection from attacks
 multiuser off
 idle off

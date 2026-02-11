@@ -20,6 +20,8 @@ alias sleepon="sudo pmset -a disablesleep 0"
 alias sleepoff="sudo pmset -a disablesleep 1"
 alias hold="scontrol hold"
 alias rel="scontrol release"
+alias upd="scontrol update"
+alias sq="squeue -o \"%.10i %.10P %.10j %.10u %.2t %.10M %.5D %.20R %.10q %.10Q %.10p\""
 
 ac() {
     path=${$1:-.}
