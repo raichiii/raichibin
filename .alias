@@ -22,6 +22,8 @@ alias hold="scontrol hold"
 alias rel="scontrol release"
 alias upd="scontrol update"
 alias sq="squeue -o \"%.10i %.10P %.10j %.10u %.2t %.10M %.5D %.20R %.10q %.10Q %.10p\""
+alias sqs="squeue -p SingleGPU"
+alias sqc="squeue -p CPU"
 
 ac() {
     path=${$1:-.}

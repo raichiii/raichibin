@@ -1,5 +1,6 @@
-pkill 2b2
 if [[ -z `lsof -t -i:55900` ]]; then
-    echo [`date`] "SSH 2B2 STARTED"
-    ssh 2b2 -Nf
+    ip=`ssh 2b2 ifconfig -a | grep "inet\s" | grep -v "\s127." | awk '{print $2}'`
+    ps -ax | grep "\[$ip\]:22" | awk '{print $1}' | xargs kill -9
+    echo [`date`] SSH 2B2 STARTED
+    ssh 2b2-forward -Nf
 fi

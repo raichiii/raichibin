@@ -1,6 +1,7 @@
 startup_message off
 vbell off
-escape ^Tt
+# escape ^Tt
+escape ^Aa
 altscreen on
 
 # Log
@@ -40,6 +41,9 @@ bind N colon 'number '
 # refuses yet another hack in rpm packaged screenrc.
 # both ] and ^] does write the paste (default unnamed) buffer.
 bind ^] paste .
+
+# Copy test
+copy C-s
 
 # Window list
 bind w windowlist -b
