@@ -1,4 +1,4 @@
-sl=${1:-600}
+sl=${1:-30}
 while [ 0 ]; do
     s2b2-once
     sleep $sl
