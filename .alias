@@ -13,7 +13,6 @@ alias gs="git status"
 alias gitc="git commit -m"
 alias ma="mamba activate"
 alias mi="mamba install -y"
-alias python="python -u"
 alias py=python
 alias lm="line-msg"
 alias sleepon="sudo pmset -a disablesleep 0"
