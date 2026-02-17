@@ -4,6 +4,7 @@ export LANG=en_US.UTF-8
 export PATH=$RAICHIBIN_PATH/bin:$PATH
 export DOCKER_BUILDKIT=1
 export MSG=true
+export HDF5_USE_FILE_LOCKING='FALSE'
 
 if [ -f $RAICHIBIN_PATH/.alias ]; then
     . $RAICHIBIN_PATH/.alias
