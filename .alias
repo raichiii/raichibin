@@ -25,8 +25,8 @@ alias sqs="squeue -p SingleGPU"
 alias sqc="squeue -p CPU"
 
 ac() {
-    path=${$1:-.}
-    . $1/.venv/bin/activate
+    path={$1:-.}
+    . $path/.venv/bin/activate
 }
 
 ojpr() {
@@ -45,6 +45,7 @@ ojc() {
     oj t -t $t -N ${others} && \
     oj s $name.cpp
 }
+
 ojp() {
     t=${1:-2}
     name=${2:-main}
