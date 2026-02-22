@@ -25,7 +25,7 @@ alias sqs="squeue -p SingleGPU"
 alias sqc="squeue -p CPU"
 
 ac() {
-    path={$1:-.}
+    path=${1:-.}
     . $path/.venv/bin/activate
 }
 
